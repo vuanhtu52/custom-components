@@ -1,0 +1,45 @@
+.custom-dropdown {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    cursor: pointer;
+}
+
+.custom-dropdown .top-item {
+    display: flex;
+    justify-content: space-between;
+    gap:  10px;
+    padding: 10px;
+    border: 1px solid grey;
+    width: 100%;
+}
+
+.custom-dropdown .top-item .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-dropdown .item {
+    padding: 10px;
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
+    border-bottom: 1px solid grey;
+    width: 100%;
+}
+
+.custom-dropdown .item:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.item-active {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.hidden {
+    display: none;
+}
+
+
+
+
