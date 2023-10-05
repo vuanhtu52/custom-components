@@ -1,0 +1,49 @@
+.menu {
+    cursor: pointer;
+}
+
+.menu-icon {
+    width: 20px;
+    background-color: plum;
+}
+
+.menu .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    background-color: plum;
+    color: white;
+    width: 300px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: absolute;
+    z-index: 9999;
+}
+
+.menu .item {
+    padding: 10px;
+}
+
+.menu .item:hover {
+    background-color: pink;
+}
+
+.menu .item-active {
+    background-color: pink;
+}
+
+.menu .close-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    align-self: center;
+    border: none;
+    background-color: white;
+    color: plum;
+    cursor: pointer;
+}
+
+.menu .hidden {
+    display: none;
+}

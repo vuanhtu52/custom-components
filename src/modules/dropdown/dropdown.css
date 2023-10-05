@@ -1,4 +1,5 @@
 .custom-dropdown {
+    position: relative;
     display: flex;
     flex-direction: column;
     width: 100px;
@@ -32,11 +33,11 @@
     background-color: rgba(0, 0, 0, 0.2);
 }
 
-.item-active {
+.custom-dropdown .item-active {
     background-color: rgba(0, 0, 0, 0.2);
 }
 
-.hidden {
+.custom-dropdown .hidden {
     display: none;
 }
 
