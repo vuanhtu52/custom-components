@@ -1,6 +1,6 @@
 import "./imageSlider.css";
 
-const createImageSlider = ({imageLinks}) => {
+const createImageSlider = ({ imageLinks }) => {
     // Add slider
     const slider = document.createElement("div");
     slider.className = "slider";
@@ -37,7 +37,6 @@ const createImageSlider = ({imageLinks}) => {
         const image = new Image();
         image.src = imageLinks[i];
         if (i !== 0) {
-            // image.style.display = "none";
             image.style.visibility = "hidden";
         }
         slider.querySelector(".container").appendChild(image);
@@ -47,12 +46,13 @@ const createImageSlider = ({imageLinks}) => {
     // Detect when an image finishes the animation
     slider.querySelectorAll(".container > img").forEach(image => {
         image.addEventListener("animationend", () => {
-            console.log(image, image.style.animationName);
             if (image.style.animationName === "slide-left-out") {
-                // image.style.display = "none";
                 image.style.visibility = "hidden";
             } else if (image.style.animationName === "slide-left-in") {
-                // image.style.display = "block";
+                image.style.visibility = "visible";
+            } else if (image.style.animationName === "slide-right-out") {
+                image.style.visibility = "hidden";
+            }  else if (image.style.animationName === "slide-right-in") {
                 image.style.visibility = "visible";
             }
         });
@@ -60,23 +60,26 @@ const createImageSlider = ({imageLinks}) => {
 
     // Detect when user clicks the next button
     slider.querySelector(".next-button").addEventListener("click", () => {
-        toNextSlide({slider: slider});
+        toNextSlide({ slider: slider });
     });
 
+    // Detect when user clicks the previous button
+    slider.querySelector(".previous-button").addEventListener("click", () => {
+        toPreviousSlide({slider: slider});
+    });
 
     return slider;
 };
 
 
-const toNextSlide = ({slider}) => {
+const toNextSlide = ({ slider }) => {
     // Hide the current image
     const currentImage = slider.querySelector(".container").children.item(slider.imageIndex);
-    currentImage.style.animation = "1s slide-left-out";
+    currentImage.style.animation = "0.5s slide-left-out";
 
 
     // Calculate the index of the next image
     let newIndex = slider.imageIndex;
-    console.log(newIndex);
     if (newIndex === slider.querySelector(".container").children.length - 1) {
         newIndex = 0;
     } else {
@@ -86,7 +89,26 @@ const toNextSlide = ({slider}) => {
 
     // Show the next image
     const newImage = slider.querySelector(".container").children.item(slider.imageIndex);
-    newImage.style.animation = "1s slide-left-in"
-}
+    newImage.style.animation = "0.5s slide-left-in"
+};
+
+const toPreviousSlide = ({ slider }) => {
+    // Hide the current image
+    const currentImage = slider.querySelector(".container").children.item(slider.imageIndex);
+    currentImage.style.animation = "0.5s slide-right-out";
+
+    // Calculate the index of the next image
+    let newIndex = slider.imageIndex;
+    if (newIndex === 0) {
+        newIndex = slider.querySelector(".container").children.length - 1;
+    } else {
+        newIndex -= 1;
+    }
+    slider.imageIndex = newIndex;
+
+    // Show the next image
+    const newImage = slider.querySelector(".container").children.item(slider.imageIndex);
+    newImage.style.animation = "0.5s slide-right-in";
+};
 
 export default createImageSlider;
