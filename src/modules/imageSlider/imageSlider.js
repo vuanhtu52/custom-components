@@ -55,7 +55,7 @@ const createImageSlider = ({ imageLinks }) => {
                 image.style.visibility = "visible";
             } else if (image.style.animationName === "slide-right-out") {
                 image.style.visibility = "hidden";
-            }  else if (image.style.animationName === "slide-right-in") {
+            } else if (image.style.animationName === "slide-right-in") {
                 image.style.visibility = "visible";
             }
         });
@@ -68,7 +68,15 @@ const createImageSlider = ({ imageLinks }) => {
 
     // Detect when user clicks the previous button
     slider.querySelector(".previous-button").addEventListener("click", () => {
-        toPreviousSlide({slider: slider});
+        toPreviousSlide({ slider: slider });
+    });
+
+    // Detect when user clicks on a dot
+    slider.querySelectorAll(".dot").forEach(dot => {
+        dot.addEventListener("click", () => {
+            const newIndex = [...slider.querySelector(".dots").children].indexOf(dot);
+            toSlide({ slider: slider, newIndex: newIndex });
+        });
     });
 
     return slider;
@@ -120,6 +128,33 @@ const toPreviousSlide = ({ slider }) => {
     // Set the corresponding dot to active
     slider.querySelector(".dot-active").classList.remove("dot-active");
     slider.querySelector(".dots").children.item(slider.imageIndex).classList.add("dot-active");
+};
+
+const toSlide = ({ slider, newIndex }) => {
+    if (newIndex !== slider.imageIndex) {
+        // Hide the current image
+        const currentImage = slider.querySelector(".container").children.item(slider.imageIndex);
+        if (newIndex > slider.imageIndex) {
+            currentImage.style.animation = "0.5s slide-left-out";
+        } else {
+            currentImage.style.animation = "0.5s slide-right-out";
+        }
+
+        // Show the next image
+        const newImage = slider.querySelector(".container").children.item(newIndex);
+        if (newIndex > slider.imageIndex) {
+            newImage.style.animation = "0.5s slide-left-in";
+        } else {
+            newImage.style.animation = "0.5s slide-right-in";
+        }
+
+        // Update index
+        slider.imageIndex = newIndex;
+
+        // Set the corresponding dot to active
+        slider.querySelector(".dot-active").classList.remove("dot-active");
+        slider.querySelector(".dots").children.item(slider.imageIndex).classList.add("dot-active");
+    }
 };
 
 export default createImageSlider;
