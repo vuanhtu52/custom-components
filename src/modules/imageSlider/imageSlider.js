@@ -79,6 +79,9 @@ const createImageSlider = ({ imageLinks }) => {
         });
     });
 
+    // Go to next slide every 5s
+    setInterval(toNextSlide, 5000, {slider: slider});
+
     return slider;
 };
 
