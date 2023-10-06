@@ -1,0 +1,78 @@
+.slider {
+    display: grid;
+    grid-template-columns: max-content 500px max-content;
+    grid-template-rows: 300px max-content;
+    justify-items: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.slider .container {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    width: 100%;
+    height: 100%;
+}
+
+.slider .container > img {
+    width: 100%;
+    height: 100%;
+}
+
+.img-hidden {
+    display: none;
+}
+
+.slider .previous-button {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;  
+}
+
+.slider .next-button {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+}
+
+.slider .previous-button, .slider .next-button {
+    width: 40px;
+    height: 60px;
+    background-color: transparent;
+    border: none;
+    font-weight: 900;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.slider .previous-button:hover, .slider .next-button:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+}
+
+.slider .previous-button:active, .slider .next-button:active {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+
+.slider .dots {
+    grid-column: 1 / 4;
+    grid-row: 2 / 3;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.slider .dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #d1d5db;
+    cursor: pointer;
+}
+
+.slider .dot:hover {
+    background-color: grey;
+}

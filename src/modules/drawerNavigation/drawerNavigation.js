@@ -1,5 +1,5 @@
 import "./drawerNavigation.css";
-import MenuIcon from "../../assets/menu.svg"
+import MenuIcon from "../../assets/svg/menu.svg"
 
 const createDrawerNavigation = ({items}) => {
     // Create the menu

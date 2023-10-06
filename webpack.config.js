@@ -7,7 +7,7 @@ module.exports = {
     devtool: 'inline-source-map',
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Custom Dropdown',
+            title: 'Custom Components',
         }),
     ],
     output: {
