@@ -125,3 +125,7 @@
 .slider .dot:hover {
     background-color: grey;
 }
+
+.slider .dot-active {
+    background-color: grey;
+}

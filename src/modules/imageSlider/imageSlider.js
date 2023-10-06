@@ -25,11 +25,14 @@ const createImageSlider = ({ imageLinks }) => {
     // Add the dots
     const dots = document.createElement("div");
     dots.className = "dots";
-    imageLinks.forEach(() => {
+    for (let i = 0; i < imageLinks.length; i++) {
         const dot = document.createElement("div");
         dot.className = "dot";
+        if (i === 0) {
+            dot.classList.add("dot-active");
+        }
         dots.appendChild(dot);
-    });
+    }
     slider.appendChild(dots);
 
     // Add the images to the container
@@ -89,7 +92,11 @@ const toNextSlide = ({ slider }) => {
 
     // Show the next image
     const newImage = slider.querySelector(".container").children.item(slider.imageIndex);
-    newImage.style.animation = "0.5s slide-left-in"
+    newImage.style.animation = "0.5s slide-left-in";
+
+    // Set the corresponding dot to active
+    slider.querySelector(".dot-active").classList.remove("dot-active");
+    slider.querySelector(".dots").children.item(slider.imageIndex).classList.add("dot-active");
 };
 
 const toPreviousSlide = ({ slider }) => {
@@ -109,6 +116,10 @@ const toPreviousSlide = ({ slider }) => {
     // Show the next image
     const newImage = slider.querySelector(".container").children.item(slider.imageIndex);
     newImage.style.animation = "0.5s slide-right-in";
+
+    // Set the corresponding dot to active
+    slider.querySelector(".dot-active").classList.remove("dot-active");
+    slider.querySelector(".dots").children.item(slider.imageIndex).classList.add("dot-active");
 };
 
 export default createImageSlider;
